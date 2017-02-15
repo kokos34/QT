@@ -3,6 +3,8 @@
 
 int main(int argc, char *argv[])
 {
+    // Doing random change in code!
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
