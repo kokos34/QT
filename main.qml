@@ -4,12 +4,18 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 
+
 ApplicationWindow
 {
     visible: true
     width: 640
     height: 480
     title: qsTr("Hello World")
+
+    Item
+    {
+        property double number: 0
+    }
 
     // menu items
     menuBar: MenuBar
@@ -32,26 +38,40 @@ ApplicationWindow
     }
 
     // Content
-    Button
-    {
-        text: qsTr("Hello World!")
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-    }
 
-    Rectangle {
+
+    Rectangle
+    {
+        id: rect
         width: 200
         height: 100
         color: "red"
 
-        Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+
+        Text
+        {
             anchors.centerIn: parent
             text: "Hello, World!"
         }
 
-        MouseArea {
+        MouseArea
+        {
+            id: mouseArea1
             anchors.fill: parent
+
             onClicked: parent.color = "blue"
         }
+    }
+
+    Button
+    {
+        text: qsTr("Hello World!")
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 5
+
+        onClicked: rect.color = "red"
     }
 }
