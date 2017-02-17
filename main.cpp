@@ -3,8 +3,9 @@
 #include <QQmlApplicationEngine>
 #include <QQmlComponent>
 #include <QQmlProperty>
-
+#include <QQuickView>
 #include <QDebug>
+#include <QQuickItem>
 
 #include "performcalculation.h"
 
@@ -24,17 +25,20 @@ int main(int argc, char *argv[])
     QQmlComponent component(&engine1, "qrc:/main.qml");
     QObject* object = component.create();
 
+    // Finding random value between 1 and 200
     int someNumber = rand()%200;
     bool isBiggerThan100 = PerformCalculation::isGivenNumberBiggerThan100(someNumber);
 
+    // Passing random value to QML form
     QQmlProperty::write(object, "isBigger", isBiggerThan100);
 
-    QMetaObject::invokeMethod(object, "functionalItem.someFunction");
+    std::cout << "bool: " << QQmlProperty::read(object, "isBigger").toBool() << std::endl;
 
-    //QQmlApplicationEngine engine;
-    //engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    // Finding parent
+    QObject* model = object->findChild<QObject*>("functionalItem");
+
+    // Invoking function
+    QMetaObject::invokeMethod(model, "someFunction");
 
     return app.exec();
-
-    std::cout << "bool = " << object->property("isBigger").toBool();
 }

@@ -18,6 +18,22 @@ ApplicationWindow
         property bool isBigger
     }
 
+    Item
+    {
+        id: functionalItem
+        function someFunction()
+        {
+            if (parent.item1.isBigger == true)
+            {
+                parent.rect2.color = "red"
+            }
+            else
+            {
+                parent.rect2.color = "blue"
+            }
+        }
+    }
+
     // menu items
     menuBar: MenuBar
     {
@@ -78,25 +94,9 @@ ApplicationWindow
         id: rect2
         width: 100
         height: 100
+        color: "yellow"
 
         anchors.top: parent.top
         anchors.verticalCenter: parent.verticalCenter
     }
-
-    Item
-    {
-        id: functionalItem
-        function someFunction()
-        {
-            if (item1.isBigger == true)
-            {
-                parent.rect2.color = "red"
-            }
-            else
-            {
-                parent.rect2.color = "blue"
-            }
-        }
-    }
-
 }
