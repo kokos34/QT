@@ -1,8 +1,11 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick 2.3
+import QtQuick.Controls 1.2
+import QtQuick.Window 2.2
+import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 
-ApplicationWindow {
+ApplicationWindow
+{
     visible: true
     width: 640
     height: 480
@@ -11,6 +14,7 @@ ApplicationWindow {
     // menu items
     menuBar: MenuBar
     {
+        id: menuBar
         Menu
         {
             title: qsTr("File")
@@ -27,30 +31,27 @@ ApplicationWindow {
         }
     }
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1 {
-        }
-
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
-        }
+    // Content
+    Button
+    {
+        text: qsTr("Hello World!")
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
     }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("First")
+    Rectangle {
+        width: 200
+        height: 100
+        color: "red"
+
+        Text {
+            anchors.centerIn: parent
+            text: "Hello, World!"
         }
-        TabButton {
-            text: qsTr("Second")
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: parent.color = "blue"
         }
     }
 }
