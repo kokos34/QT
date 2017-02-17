@@ -6,7 +6,7 @@ class PerformCalculation
 {
 public:
     PerformCalculation();
-    static bool isGivenNumberBiggerThan100(double number);
+    static bool isGivenNumberBiggerThan100(int number);
 };
 
 #endif // PERFORMCALCULATION_H

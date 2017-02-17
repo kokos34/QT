@@ -5,9 +5,9 @@ PerformCalculation::PerformCalculation()
 
 }
 
-static bool PerformCalculation::isGivenNumberBiggerThan100(double number)
+bool PerformCalculation::isGivenNumberBiggerThan100(int number)
 {
-    if(number > 100.0)
+    if(number > 100)
         return true;
     else
         return false;

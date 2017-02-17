@@ -14,7 +14,8 @@ ApplicationWindow
 
     Item
     {
-        property double number: 0
+        id: item1
+        property bool isBigger
     }
 
     // menu items
@@ -36,9 +37,6 @@ ApplicationWindow
             }
         }
     }
-
-    // Content
-
 
     Rectangle
     {
@@ -74,4 +72,31 @@ ApplicationWindow
 
         onClicked: rect.color = "red"
     }
+
+    Rectangle
+    {
+        id: rect2
+        width: 100
+        height: 100
+
+        anchors.top: parent.top
+        anchors.verticalCenter: parent.verticalCenter
+    }
+
+    Item
+    {
+        id: functionalItem
+        function someFunction()
+        {
+            if (item1.isBigger == true)
+            {
+                parent.rect2.color = "red"
+            }
+            else
+            {
+                parent.rect2.color = "blue"
+            }
+        }
+    }
+
 }
