@@ -3,14 +3,17 @@ import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
+import QtQuick 2.7
 
 
 ApplicationWindow
 {
     visible: true
-    width: 640
-    height: 480
+    width: Screen.width
+    height: Screen.height
     title: qsTr("Hello World")
+
+
 
     Item
     {
@@ -38,6 +41,7 @@ ApplicationWindow
     menuBar: MenuBar
     {
         id: menuBar
+
         Menu
         {
             title: qsTr("File")
@@ -57,8 +61,10 @@ ApplicationWindow
     Rectangle
     {
         id: rect
-        width: 200
-        height: 100
+
+        width: Screen.width / 4
+        height: Screen.height / 6
+
         color: "red"
 
         anchors.horizontalCenter: parent.horizontalCenter
@@ -66,8 +72,19 @@ ApplicationWindow
 
         Text
         {
-            anchors.centerIn: parent
-            text: "Hello, World!"
+            anchors
+            {
+                left: parent.left
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+
+            font.bold: true
+            font.italic: true
+
+
+            text: "Click me to turn blue!"
+            wrapMode: Text.Wrap
         }
 
         MouseArea
@@ -81,7 +98,10 @@ ApplicationWindow
 
     Button
     {
-        text: qsTr("Hello World!")
+        text: qsTr("Click me to make rectangle red!")
+
+        width: Screen.width / 3
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.topMargin: 5
@@ -92,8 +112,10 @@ ApplicationWindow
     Rectangle
     {
         id: rect2
-        width: 100
-        height: 100
+
+        width: Screen.width / 10
+        height: Screen.height
+
         color: "yellow"
 
         anchors.top: parent.top
