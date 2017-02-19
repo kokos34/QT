@@ -18,7 +18,7 @@ ApplicationWindow
     Item
     {
         id: item1
-        property bool isBigger
+        property bool isBigger: false
     }
 
     Item
@@ -77,11 +77,11 @@ ApplicationWindow
                 left: parent.left
                 right: parent.right
                 verticalCenter: parent.verticalCenter
+                //horizontalCenter: parent.horizontalCenter
             }
 
             font.bold: true
             font.italic: true
-
 
             text: "Click me to turn blue!"
             wrapMode: Text.Wrap
